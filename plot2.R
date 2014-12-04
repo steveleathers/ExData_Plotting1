@@ -1,6 +1,6 @@
 #Import and clean data
 
-hhpower = read.table("household_power_consumption.txt", header=TRUE, sep=";")
+hhpower = read.table("household_power_consumption.txt", header=TRUE, sep=";", stringsAsFactors=FALSE)
 head(hhpower)
 hhpower$date2 = as.Date(hhpower$Date, "%d/%m/%Y")
 head(hhpower, 30)
@@ -17,7 +17,7 @@ hh$dt1 = ymd_hms(hh$DateTime)
 png(filename="plot2.png", width=480, height=480)
 
 #construct plot
-plot(hh$dt1, (as.numeric(hh$Global_active_power)/500), type="l", ylab="Global Active Power (kilowatts)", xlab="")
+plot(hh$dt1, (as.numeric(hh$Global_active_power)), type="l", ylab="Global Active Power (kilowatts)", xlab="")
 
 #close graphics device
 dev.off()
